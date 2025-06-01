@@ -1,5 +1,6 @@
 package com.example.beautyandfashion.ui.screen.home
 
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -9,20 +10,22 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.beautyandfashion.R
 import com.example.beautyandfashion.ui.component.BottomBar
 import com.example.beautyandfashion.ui.component.FeatureCard
 import com.example.beautyandfashion.ui.theme.BrownDark
 import com.example.beautyandfashion.ui.theme.BrownMedium
 
-data class Feature(val title: String, val description: String, val route: String)
+
+data class Feature(val title: String, val description: String, @DrawableRes val imageRes: Int, val route: String)
 
 @Composable
 fun HomeScreen(navController: NavController) {
     val features = listOf(
-        Feature("Color Match", "Discover your ideal colors", "color"),
-        Feature("Skin Analysis", "Know your skin type", "skin"),
-        Feature("Body Shape", "Find your perfect fit", "body"),
-        Feature("WikiBeauty", "Beauty tips & facts", "wiki")
+        Feature("Color Match", "Discover shades that make you pop!", R.drawable.color,"color"),
+        Feature("Skin Analysis", "Know your skin. Glow your skin!", R.drawable.skin,"skin"),
+        Feature("Body Shape", "Dress for your shape, not trend!", R.drawable.body,"body"),
+        Feature("WikiBeauty", "Beauty wisdom at your fingertips!", R.drawable.wikibeauty,"wiki")
     )
 
     Scaffold(
@@ -54,6 +57,7 @@ fun HomeScreen(navController: NavController) {
                     FeatureCard(
                         title = feature.title,
                         description = feature.description,
+                        imageRes = feature.imageRes,
                         onClick = {
                             navController.navigate(feature.route)
                         }
