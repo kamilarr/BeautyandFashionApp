@@ -1,3 +1,4 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
 package com.example.beautyandfashion.ui.screen.home
 
 import androidx.annotation.DrawableRes
@@ -29,6 +30,15 @@ fun HomeScreen(navController: NavController) {
     )
 
     Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text("Hi Jasmine \uD83D\uDC4B") },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = BrownDark,
+                    titleContentColor = MaterialTheme.colorScheme.onPrimary
+                )
+            )
+        },
         bottomBar = {
             BottomBar(navController, "home")
         }
@@ -41,12 +51,6 @@ fun HomeScreen(navController: NavController) {
                 .padding(innerPadding),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            Text(
-                text = "Hi Jasmine 👋",
-                style = MaterialTheme.typography.headlineSmall,
-                color = BrownMedium
-            )
-
             LazyVerticalGrid(
                 columns = GridCells.Fixed(2),
                 verticalArrangement = Arrangement.spacedBy(16.dp),
