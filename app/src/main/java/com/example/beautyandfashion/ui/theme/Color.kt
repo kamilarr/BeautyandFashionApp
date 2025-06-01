@@ -2,10 +2,10 @@ package com.example.beautyandfashion.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
-
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
+val BrownDark = Color(0xFF623B1C)
+val BrownMedium = Color(0xFF744B28)
+val BrownLight = Color(0xFFCDA582)
+val Cream = Color(0xFFF1E1C7)
+val CreamLight = Color(0xFFF1E4D9)
+val White = Color(0xFFFFFFFF)
+val Black = Color(0xFF000000)
