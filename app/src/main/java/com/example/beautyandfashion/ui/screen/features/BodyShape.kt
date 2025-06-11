@@ -76,7 +76,7 @@ fun BodyShapeScreen(
         topBar = {
             AppTopBar(
                 title = "Body Shape Calculator",
-                onBack = null,
+                onBack = { navController.navigateUp() },
                 icon = null
             )
         }
