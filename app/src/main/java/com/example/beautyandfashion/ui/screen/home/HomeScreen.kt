@@ -31,7 +31,7 @@ fun HomeScreen(navController: NavController) {
     Scaffold(
         topBar = {
             AppTopBar(
-                title = "Hi Jasmine 👋",
+                title = "Hi Jasmine !",
                 onBack = null,
                 icon = null
             )

@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.beautyandfashion.R
+import com.example.beautyandfashion.ui.component.AppTopBar
 import com.example.beautyandfashion.ui.component.BottomBar
 import com.example.beautyandfashion.ui.theme.BrownDark
 import com.example.beautyandfashion.ui.theme.Manrope
@@ -36,12 +37,10 @@ fun SettingsScreen(navController: NavController) {
     val scrollState = rememberScrollState()
     Scaffold(
         topBar = {
-            TopAppBar(
-                title = { Text("Profile") },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = BrownDark,
-                    titleContentColor = MaterialTheme.colorScheme.onPrimary
-                )
+            AppTopBar(
+                title = "Profile",
+                onBack = null,
+                icon = null
             )
         },
         bottomBar = {

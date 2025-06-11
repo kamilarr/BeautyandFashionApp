@@ -8,6 +8,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.beautyandfashion.ui.component.AppTopBar
 import com.example.beautyandfashion.ui.component.BottomBar
 import com.example.beautyandfashion.ui.theme.BrownDark
 
@@ -15,14 +16,12 @@ import com.example.beautyandfashion.ui.theme.BrownDark
 fun WardrobeScreen(navController: NavController) {
     Scaffold(
         topBar = {
-            TopAppBar(
-                title = { Text("My Wardrobe") },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = BrownDark,
-                    titleContentColor = MaterialTheme.colorScheme.onPrimary
-                )
+            AppTopBar(
+                title = "My Wardrobe",
+                onBack = null,
+                icon = null
             )
-        },
+        } ,
         bottomBar = {
             BottomBar(navController, "wardrobe")
         }

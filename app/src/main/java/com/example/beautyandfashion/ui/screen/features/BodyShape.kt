@@ -38,6 +38,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.example.beautyandfashion.ui.component.AppTopBar
 import com.example.beautyandfashion.ui.theme.BrownDark
 import com.example.beautyandfashion.ui.theme.BrownLight
 import com.example.beautyandfashion.ui.theme.BrownMedium
@@ -73,24 +74,10 @@ fun BodyShapeScreen(
 
     Scaffold(
         topBar = {
-            TopAppBar(
-                title = { Text("Body Shape Calculator") },
-                navigationIcon = {
-                    IconButton(onClick = { navController.navigateUp() }) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = "Back")
-                    }
-                },
-                actions = {
-                    IconButton(onClick = { viewModel.resetCalculation() }) {
-                        Icon(Icons.Default.Refresh, contentDescription = "Reset")
-                    }
-                },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = BrownDark,
-                    titleContentColor = Color.White,
-                    navigationIconContentColor = Color.White,
-                    actionIconContentColor = Color.White
-                )
+            AppTopBar(
+                title = "Body Shape Calculator",
+                onBack = null,
+                icon = null
             )
         }
     ) { innerPadding ->
