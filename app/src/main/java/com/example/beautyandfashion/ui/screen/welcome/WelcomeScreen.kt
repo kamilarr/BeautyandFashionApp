@@ -48,13 +48,26 @@ fun WelcomeScreen(navController: NavController) {
                 color = BrownMedium
             )
 
+            Spacer(modifier = Modifier.height(48.dp))
+
             Button(
-                onClick = { navController.navigate("home") },
+                onClick = { navController.navigate("login") },
                 colors = ButtonDefaults.buttonColors(containerColor = BrownDark),
                 modifier = Modifier
-                    .padding(top = 32.dp)
+                    .fillMaxWidth(0.6f)
+                    .height(48.dp)
             ) {
-                Text("Get Started", color = Color.White)
+                Text("Login", color = Color.White)
+            }
+
+            Button(
+                onClick = { navController.navigate("signUp") },
+                colors = ButtonDefaults.buttonColors(containerColor = BrownDark),
+                modifier = Modifier
+                    .fillMaxWidth(0.6f)
+                    .height(48.dp)
+            ) {
+                Text("Sign Up", color = Color.White)
             }
         }
     }

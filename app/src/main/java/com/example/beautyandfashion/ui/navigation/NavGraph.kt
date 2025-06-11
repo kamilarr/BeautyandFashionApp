@@ -19,6 +19,8 @@ import com.example.beautyandfashion.ui.screen.home.HomeScreen
 import com.example.beautyandfashion.ui.screen.settings.SettingsScreen
 import com.example.beautyandfashion.ui.screen.wardrobe.WardrobeScreen
 import com.example.beautyandfashion.ui.screen.welcome.WelcomeScreen
+import com.example.beautyandfashion.ui.screen.welcome.LoginScreen
+import com.example.beautyandfashion.ui.screen.welcome.SignUpScreen
 
 @Composable
 fun NavGraph(navController: NavHostController) {
@@ -27,6 +29,8 @@ fun NavGraph(navController: NavHostController) {
         startDestination = "welcome"
     ) {
         composable("welcome") { WelcomeScreen(navController) }
+        composable("login") { LoginScreen(navController) }
+        composable("signUp") { SignUpScreen(navController) }
         composable("home") { HomeScreen(navController) }
         composable("wardrobe") { WardrobeScreen(navController) }
         composable("settings") { SettingsScreen(navController) }
