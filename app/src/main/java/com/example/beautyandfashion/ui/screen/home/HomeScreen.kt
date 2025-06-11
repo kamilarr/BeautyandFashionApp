@@ -12,10 +12,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.beautyandfashion.R
+import com.example.beautyandfashion.ui.component.AppTopBar
 import com.example.beautyandfashion.ui.component.BottomBar
 import com.example.beautyandfashion.ui.component.FeatureCard
-import com.example.beautyandfashion.ui.theme.BrownDark
-import com.example.beautyandfashion.ui.theme.BrownMedium
 
 
 data class Feature(val title: String, val description: String, @DrawableRes val imageRes: Int, val route: String)
@@ -31,14 +30,12 @@ fun HomeScreen(navController: NavController) {
 
     Scaffold(
         topBar = {
-            TopAppBar(
-                title = { Text("Hi Jasmine \uD83D\uDC4B") },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = BrownDark,
-                    titleContentColor = MaterialTheme.colorScheme.onPrimary
-                )
+            AppTopBar(
+                title = "Hi Jasmine 👋",
+                onBack = null,
+                icon = null
             )
-        },
+        }        ,
         bottomBar = {
             BottomBar(navController, "home")
         }
