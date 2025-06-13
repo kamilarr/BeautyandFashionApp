@@ -6,7 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.beautyandfashion.ui.screen.features.BeautypediaScreen
 import com.example.beautyandfashion.ui.screen.features.BodyShapeScreen
-import com.example.beautyandfashion.ui.screen.features.ColorAnalysisScreen
+import com.example.beautyandfashion.ui.screen.features.ColorMatch.ColorAnalysisScreen
 import com.example.beautyandfashion.ui.screen.features.SkinAnalysisResult
 import com.example.beautyandfashion.ui.screen.features.SkinAnalysisScreen
 import com.example.beautyandfashion.ui.screen.features.SkinAnalysisStep2
