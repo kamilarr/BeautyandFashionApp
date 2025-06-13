@@ -25,7 +25,7 @@ fun HomeScreen(navController: NavController) {
         Feature("Color Match", "Discover shades that make you pop!", R.drawable.color,"color"),
         Feature("Skin Analysis", "Know your skin. Glow your skin!", R.drawable.skin,"skin"),
         Feature("Body Shape", "Dress for your shape, not trend!", R.drawable.body,"body"),
-        Feature("WikiBeauty", "Beauty wisdom at your fingertips!", R.drawable.wikibeauty,"wiki")
+        Feature("Beautypedia", "Beauty wisdom at your fingertips!", R.drawable.wikibeauty,"wiki")
     )
 
     Scaffold(

@@ -15,6 +15,8 @@ import com.example.beautyandfashion.ui.screen.welcome.SignUpScreen
 import com.example.beautyandfashion.ui.screen.welcome.WelcomeScreen
 import com.example.beautyandfashion.ui.screen.features.ColorMatch.ColorAnalysisScreen
 import com.example.beautyandfashion.ui.theme.SkinType
+import com.example.beautyandfashion.ui.screen.features.Beautypedia.ArticleDetailScreen
+import com.example.beautyandfashion.ui.screen.features.Beautypedia.BeautypediaScreen
 
 @Composable
 fun NavGraph(navController: NavHostController) {
@@ -47,5 +49,13 @@ fun NavGraph(navController: NavHostController) {
                 .getOrDefault(SkinType.NORMAL)
             SkinAnalysisScreen(navController = navController, skinType = skinType)
             }
+        composable(
+            "articleDetail/{articleId}",
+            arguments = listOf(navArgument("articleId") { type = NavType.IntType })
+        ) { backStackEntry ->
+            val id = backStackEntry.arguments?.getInt("articleId") ?: 0
+            ArticleDetailScreen(articleId = id, navController = navController)
         }
+
+    }
 }
