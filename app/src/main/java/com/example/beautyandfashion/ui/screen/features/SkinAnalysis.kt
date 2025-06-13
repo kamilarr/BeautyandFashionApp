@@ -52,9 +52,9 @@ fun SkinAnalysisScreen(navController: NavController) {
 
             val options = listOf(
                 "Kulit terasa lembut, halus, tidak ada yang mengelupas, dan tidak terlalu berminyak",
-                "Kulit terasa kering, tertarik, terlihat kering dan kusam",
+                "Kulit terasa kering, tertarik, terlihat kering, dan kusam",
                 "Kulit berminyak, licin, dan mengkilap",
-                "Kulit kombinasi, terasa berminyak di T-Zone, kering di bagian lain"
+                "Mengkilap di T-Zone, kering di area lainnya"
             )
 
             options.forEach { text ->
@@ -106,7 +106,7 @@ fun SkinAnalysisStep2(navController: NavController) {
             verticalArrangement = Arrangement.Top
         ) {
             Text(
-                "Nah udah hampir waktu makan siang\nYuk cek kondisi kulit muka kita!",
+                "Apa masalah kulit yang paling\nsering kamu alami 1 bulan\nterakhir?",
                 fontSize = 18.sp,
                 color = BrownDark,
                 modifier = Modifier.padding(bottom = 24.dp),
@@ -115,10 +115,10 @@ fun SkinAnalysisStep2(navController: NavController) {
             )
 
             val options = listOf(
-                "Terlihat lembap, segar, dan bersih",
-                "Berkilau di beberapa bagian, dan terasa berminyak serta lengket",
-                "Terasa kasar dan terlihat kemerahan",
-                "Bersinar di bagian T-Zone"
+                "Kulitku cukup stabil, tidak ada masalah byang berarti",
+                "Kulit sering terasa kering dan ketarik, kadang juga mengelupas",
+                "Sering muncul jerawat di area-area wajah",
+                "Kulit sering kemerahan dan berjerawat di waktu bersamaan"
             )
 
             options.forEach { text ->
@@ -192,7 +192,7 @@ fun SkinAnalysisStep3(navController: NavController) {
             verticalArrangement = Arrangement.Top
         ) {
             Text(
-                "Jerawat dan Blackhead sering\ndatang ke wajah kita?",
+                "Mana yang paling\nmendeskripsikan tampilan pori-\npori di wajahmu?",
                 fontSize = 18.sp,
                 color = BrownDark,
                 modifier = Modifier.padding(bottom = 24.dp),
@@ -201,10 +201,10 @@ fun SkinAnalysisStep3(navController: NavController) {
             )
 
             val options = listOf(
-                "Jarang banget!",
-                "Setiap kali deh",
-                "Kalo lagi mau menstruasi aja",
-                "Sesekali sih biasanya"
+                "Pori-pori terlihat kecil hingga sedang, cukup merata",
+                "Pori-pori sangat kecil, bahkan hampir tidak kelihatan",
+                "Pori-pori besar dan terlihat jelas di hampir seluruh wajah",
+                "Pori-pori besar hanya di T-zone, tapi kecil di bagian lain."
             )
 
             options.forEach { text ->
@@ -278,7 +278,7 @@ fun SkinAnalysisStep4(navController: NavController) {
             verticalArrangement = Arrangement.Top
         ) {
             Text(
-                "Produk apa sih yang biasanya\ndipakai sepanjang hari?",
+                "Kapan biasanya kulit wajahmu\nmuncul kemerahan?",
                 fontSize = 18.sp,
                 color = BrownDark,
                 modifier = Modifier.padding(bottom = 24.dp),
@@ -287,10 +287,10 @@ fun SkinAnalysisStep4(navController: NavController) {
             )
 
             val options = listOf(
-                "Nggak ada, soalnya kulitnya ga bermasalah",
-                "Powder, biar nggak kelihatan terlalu berminyak",
-                "Moisturaizer atau face mist biar muka kelihatan tetap lembap",
-                "Cukup kertas mintak buat ngejaga biar beberapa area nggak terlihat berminyak"
+                "Hanya saat terpapar sinar matahari",
+                "Setiap kali mencuci muka atau saat tidak menggunakan pelembap",
+                "Setiap ada jerawat atau masalah hormonal",
+                "Saat tidak cocok menggunakan produk skincare baru"
             )
 
             options.forEach { text ->
@@ -364,7 +364,7 @@ fun SkinAnalysisStep5(navController: NavController) {
             verticalArrangement = Arrangement.Top
         ) {
             Text(
-                "Biasanya kalau berjerawat tuh\nkarena apa sih?",
+                "Seberapa mengkilap wajahmu di\nsore hari?",
                 fontSize = 18.sp,
                 color = BrownDark,
                 modifier = Modifier.padding(bottom = 24.dp),
@@ -373,10 +373,10 @@ fun SkinAnalysisStep5(navController: NavController) {
             )
 
             val options = listOf(
-                "Nggak pernah berjerawat nih",
-                "Biasanya kalau nggak cuci muka pakai cleanser",
-                "Sebulan sekali sih jerawatnya, tapi nggak tentu areanya",
-                "Di area T-Zone aja sih biasanya"
+                "Tidak terlalu mengkilap, tapi juga tidak tampak kusam",
+                "Kulit lebih terlihat kusam dan kadang terasa perih",
+                "Wajah sangat mengkilap dan berminyak di semua bagian",
+                "Hanya T-zone yang mengkilap, area lain tetap normal"
             )
 
             options.forEach { text ->
@@ -450,7 +450,7 @@ fun SkinAnalysisStep6(navController: NavController) {
             verticalArrangement = Arrangement.Top
         ) {
             Text(
-                "Nah sekarang ngomongin pori\nGimana kelihatannya pori-pori di wajah?",
+                "Jika kamu hanya punya 1 produk\nuntuk touch up, apa produk\n yang kamu pilih?",
                 fontSize = 18.sp,
                 color = BrownDark,
                 modifier = Modifier.padding(bottom = 24.dp),
@@ -459,10 +459,10 @@ fun SkinAnalysisStep6(navController: NavController) {
             )
 
             val options = listOf(
-                "Terlihat berukuran normal, hampir tidak terlihat",
-                "Sangat terlihat dan terbuka",
-                "Tidak telihat sih",
-                "Terlihat, tapi biasa aja ukurannya"
+                "Face mist untuk menyegarkan dan melembapkan kulit",
+                "Moisturizer karena kulitku mudah kering saat siang",
+                "Blotting paper buat menyerap minyak tanpa hapus makeup",
+                "Loose powder supaya wajah tetap kelihatan matte"
             )
 
             options.forEach { text ->
@@ -536,7 +536,7 @@ fun SkinAnalysisStep7(navController: NavController) {
             verticalArrangement = Arrangement.Top
         ) {
             Text(
-                "Moisturaizer seperti apa sih yang kamu cari?",
+                "Apa makeup finish yang kamu\nsuka?",
                 fontSize = 18.sp,
                 color = BrownDark,
                 modifier = Modifier.padding(bottom = 24.dp),
@@ -545,10 +545,10 @@ fun SkinAnalysisStep7(navController: NavController) {
             )
 
             val options = listOf(
-                "Moisturaizer yang bikin kulit terasa halus dan kenyal",
-                "Yang cepat meresap dan tidak menghambat pori-pori",
-                "Moisturaizer yang terksturnya kaya dan merawat kulit secara intensif",
-                "Yang bikin kulit terlihat matte sekaligus melembabkan di area tertentu"
+                "Semi-matte, natural tapi nggak terlalu mengkilap",
+                "Dewy, bikin kulit kelihatan sehat dan glowing",
+                "Matte, biar wajah kelihatan halus dan nggak berminyak",
+                "Satin-matte, sedikit glowing tapi tetap elegan"
             )
 
             options.forEach { text ->
