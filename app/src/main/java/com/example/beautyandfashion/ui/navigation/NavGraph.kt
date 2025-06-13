@@ -2,25 +2,19 @@ package com.example.beautyandfashion.ui.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.beautyandfashion.ui.screen.features.BeautypediaScreen
-import com.example.beautyandfashion.ui.screen.features.BodyShapeScreen
-import com.example.beautyandfashion.ui.screen.features.ColorMatch.ColorAnalysisScreen
-import com.example.beautyandfashion.ui.screen.features.SkinAnalysisResult
-import com.example.beautyandfashion.ui.screen.features.SkinAnalysisScreen
-import com.example.beautyandfashion.ui.screen.features.SkinAnalysisStep2
-import com.example.beautyandfashion.ui.screen.features.SkinAnalysisStep3
-import com.example.beautyandfashion.ui.screen.features.SkinAnalysisStep4
-import com.example.beautyandfashion.ui.screen.features.SkinAnalysisStep5
-import com.example.beautyandfashion.ui.screen.features.SkinAnalysisStep6
-import com.example.beautyandfashion.ui.screen.features.SkinAnalysisStep7
+import androidx.navigation.navArgument
+import com.example.beautyandfashion.ui.screen.features.*
 import com.example.beautyandfashion.ui.screen.home.HomeScreen
 import com.example.beautyandfashion.ui.screen.settings.SettingsScreen
 import com.example.beautyandfashion.ui.screen.wardrobe.WardrobeScreen
-import com.example.beautyandfashion.ui.screen.welcome.WelcomeScreen
 import com.example.beautyandfashion.ui.screen.welcome.LoginScreen
 import com.example.beautyandfashion.ui.screen.welcome.SignUpScreen
+import com.example.beautyandfashion.ui.screen.welcome.WelcomeScreen
+import com.example.beautyandfashion.ui.screen.features.ColorMatch.ColorAnalysisScreen
+import com.example.beautyandfashion.ui.theme.SkinType
 
 @Composable
 fun NavGraph(navController: NavHostController) {
@@ -38,15 +32,20 @@ fun NavGraph(navController: NavHostController) {
         composable("color") { ColorAnalysisScreen(navController) }
         composable("skin") { SkinAnalysisScreen(navController) }
         composable("wiki") { BeautypediaScreen(navController) }
-        composable("skinStep2") { SkinAnalysisStep2(navController)  }
-        composable("skinStep3") { SkinAnalysisStep3(navController)  }
+        composable("skinStep2") { SkinAnalysisStep2(navController) }
+        composable("skinStep3") { SkinAnalysisStep3(navController) }
         composable("skinStep4") { SkinAnalysisStep4(navController) }
-        composable("skinStep5") { SkinAnalysisStep5(navController)  }
+        composable("skinStep5") { SkinAnalysisStep5(navController) }
         composable("skinStep6") { SkinAnalysisStep6(navController) }
         composable("skinStep7") { SkinAnalysisStep7(navController) }
-        composable("skinResult") { SkinAnalysisResult(navController)  }
-
-
-
-    }
+        composable(
+            route = "skinResult/{skinType}",
+            arguments = listOf(navArgument("skinType") { type = NavType.StringType })
+        ) { backStackEntry ->
+            val typeString = backStackEntry.arguments?.getString("skinType") ?: "NORMAL"
+            val skinType = runCatching { SkinType.valueOf(typeString.uppercase()) }
+                .getOrDefault(SkinType.NORMAL)
+            SkinAnalysisScreen(navController = navController, skinType = skinType)
+            }
+        }
 }
