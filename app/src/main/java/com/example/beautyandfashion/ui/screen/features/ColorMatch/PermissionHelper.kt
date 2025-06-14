@@ -1,4 +1,4 @@
-package com.example.beautyandfashion.ui.screen.features.ColorMatch
+package com.example.beautyandfashion.ui.screen.features.colormatch
 
 import android.Manifest
 import android.widget.Toast

@@ -1,4 +1,4 @@
-package com.example.beautyandfashion.ui.screen.features.ColorMatch
+package com.example.beautyandfashion.ui.screen.features.colormatch
 
 import android.util.Log
 import androidx.camera.core.CameraSelector

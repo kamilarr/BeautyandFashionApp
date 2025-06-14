@@ -13,7 +13,7 @@ import com.example.beautyandfashion.ui.screen.wardrobe.WardrobeScreen
 import com.example.beautyandfashion.ui.screen.welcome.LoginScreen
 import com.example.beautyandfashion.ui.screen.welcome.SignUpScreen
 import com.example.beautyandfashion.ui.screen.welcome.WelcomeScreen
-import com.example.beautyandfashion.ui.screen.features.ColorMatch.ColorAnalysisScreen
+import com.example.beautyandfashion.ui.screen.features.colormatch.ColorAnalysisScreen
 import com.example.beautyandfashion.ui.theme.SkinType
 import com.example.beautyandfashion.ui.screen.features.Beautypedia.ArticleDetailScreen
 import com.example.beautyandfashion.ui.screen.features.Beautypedia.BeautypediaScreen
