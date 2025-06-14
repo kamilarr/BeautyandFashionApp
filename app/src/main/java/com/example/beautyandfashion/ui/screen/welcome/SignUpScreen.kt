@@ -122,7 +122,12 @@ fun SignUpScreen(navController: NavController) {
                 Text("Already have an account?", color = BrownDark)
                 Spacer(modifier = Modifier.width(4.dp))
                 TextButton(onClick = { navController.navigate("login") }) {
-                    Text("Login", color = Color(0xFFE49B6D))
+                    Text(
+                        text = "Login",
+                        color = BrownDark,
+                        fontWeight = FontWeight.Bold,
+                        style = MaterialTheme.typography.bodyMedium
+                    )
                 }
             }
         }
