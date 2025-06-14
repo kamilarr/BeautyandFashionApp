@@ -47,7 +47,7 @@ fun ColorAnalysisScreen(navController: NavController) {
     Scaffold(
         topBar = {
             AppTopBar(
-                title = "Personal Color Analysis",
+                title = "Personal Color Match",
                 onBack = { navController.navigateUp() },
                 icon = null
             )
