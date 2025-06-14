@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.beautyandfashion.R
+import androidx.compose.ui.layout.ContentScale
 import com.example.beautyandfashion.ui.component.AppTopBar
 
 @Composable
@@ -84,28 +85,29 @@ fun ColorAnalysisScreen(navController: NavController) {
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .aspectRatio(1f)
+                    .height(470.dp)
                     .clip(RoundedCornerShape(28.dp)),
                 contentAlignment = Alignment.Center
             ) {
                 Image(
                     painter = painterResource(id = backgrounds[currentIndex]),
                     contentDescription = backgroundLabels[currentIndex],
+                    contentScale = ContentScale.Crop,
                     modifier = Modifier
-                        .matchParentSize()
+                        .fillMaxSize()
                         .clip(RoundedCornerShape(28.dp))
                 )
 
                 if (hasPermission) {
                     CameraPreview(
                         modifier = Modifier
-                            .size(140.dp)
+                            .size(160.dp)
                             .clip(CircleShape)
                     )
                 } else {
                     Box(
                         modifier = Modifier
-                            .size(140.dp)
+                            .size(160.dp)
                             .clip(CircleShape)
                             .background(Color.Black)
                     )
@@ -127,7 +129,7 @@ fun ColorAnalysisScreen(navController: NavController) {
                         Icon(
                             imageVector = Icons.Filled.ArrowBackIos,
                             contentDescription = "Previous",
-                            tint = Color.White
+                            tint = Color.Black
                         )
                     }
 
@@ -139,7 +141,7 @@ fun ColorAnalysisScreen(navController: NavController) {
                         Icon(
                             imageVector = Icons.Filled.ArrowForwardIos,
                             contentDescription = "Next",
-                            tint = Color.White
+                            tint = Color.Black
                         )
                     }
                 }
@@ -154,7 +156,7 @@ fun ColorAnalysisScreen(navController: NavController) {
                 color = titleColor
             )
 
-            Spacer(modifier = Modifier.height(32.dp))
+            Spacer(modifier = Modifier.height(24.dp))
 
             Button(
                 onClick = {
