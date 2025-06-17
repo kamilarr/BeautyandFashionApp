@@ -9,11 +9,12 @@ import androidx.navigation.navArgument
 import com.example.beautyandfashion.ui.screen.features.*
 import com.example.beautyandfashion.ui.screen.home.HomeScreen
 import com.example.beautyandfashion.ui.screen.settings.SettingsScreen
+import com.example.beautyandfashion.ui.screen.settings.PremiumPlanScreen
 import com.example.beautyandfashion.ui.screen.wardrobe.WardrobeScreen
 import com.example.beautyandfashion.ui.screen.welcome.LoginScreen
 import com.example.beautyandfashion.ui.screen.welcome.SignUpScreen
 import com.example.beautyandfashion.ui.screen.welcome.WelcomeScreen
-import com.example.beautyandfashion.ui.screen.features.colormatch.ColorAnalysisScreen
+import com.example.beautyandfashion.ui.screen.features.ColorMatch.ColorAnalysisScreen
 import com.example.beautyandfashion.ui.screen.features.Beautypedia.ArticleDetailScreen
 import com.example.beautyandfashion.ui.screen.features.Beautypedia.BeautypediaScreen
 import com.example.beautyandfashion.ui.screen.features.ColorMatch.ResultScreen
@@ -36,12 +37,11 @@ fun NavGraph(navController: NavHostController) {
         composable("color") { ColorAnalysisScreen(navController) }
         composable("skin") { SkinAnalysisScreen(navController) }
         composable("wiki") { BeautypediaScreen(navController) }
-
+        composable("premium") { PremiumPlanScreen(navController) }
         composable("result/{season}") { backStackEntry ->
             val season = backStackEntry.arguments?.getString("season") ?: "Unknown"
             ResultScreen(seasonType = season, navController = navController)
         }
-
         composable(
             route = "skinResult/{skinType}",
             arguments = listOf(navArgument("skinType") { type = NavType.StringType })
@@ -49,7 +49,6 @@ fun NavGraph(navController: NavHostController) {
             val type = backStackEntry.arguments?.getString("skinType") ?: "Normal"
             SkinResultScreen(navController = navController, skinType = type)
         }
-
         composable(
             "articleDetail/{articleId}",
             arguments = listOf(navArgument("articleId") { type = NavType.IntType })

@@ -1,4 +1,4 @@
-package com.example.beautyandfashion.ui.screen.features.colormatch
+package com.example.beautyandfashion.ui.screen.features.ColorMatch
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

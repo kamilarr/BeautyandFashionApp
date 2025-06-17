@@ -87,7 +87,7 @@ fun SettingsScreen(navController: NavController) {
             )
 
             Button(
-                onClick = { /* TODO */ },
+                onClick = {  navController.navigate("premium") },
                 shape = RoundedCornerShape(12.dp),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color(0xFFB4845C),
