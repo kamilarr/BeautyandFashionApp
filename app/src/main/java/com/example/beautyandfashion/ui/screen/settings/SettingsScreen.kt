@@ -135,7 +135,9 @@ fun SettingsScreen(navController: NavController) {
             SettingsItem("History Recommendation", Icons.Filled.Refresh)
             SettingsItem("Terms of Service", Icons.Outlined.Settings)
             SettingsItem("Privacy Policy", Icons.Filled.Lock)
-            SettingsItem("Help", Icons.Filled.Warning)
+            SettingsItem("Help", Icons.Filled.Warning) {
+                navController.navigate("help")
+            }
             SettingsItem("About Us", Icons.Filled.Info)
             SettingsItem("Sign Out", Icons.Filled.ExitToApp) {
                 navController.navigate("login") {
