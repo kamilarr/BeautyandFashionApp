@@ -33,7 +33,6 @@ fun NavGraph(navController: NavHostController) {
         composable("signUp") { SignUpScreen(navController) }
         composable("home") { HomeScreen(navController) }
         composable("wardrobe") { WardrobeScreen(navController) }
-        composable("add_item") { AddItemScreen(navController) }
         composable("settings") { SettingsScreen(navController) }
         composable("body") { BodyShapeScreen(navController) }
         composable("color") { ColorAnalysisScreen(navController) }
@@ -57,6 +56,10 @@ fun NavGraph(navController: NavHostController) {
         ) { backStackEntry ->
             val id = backStackEntry.arguments?.getInt("articleId") ?: 0
             ArticleDetailScreen(articleId = id, navController = navController)
+        }
+        composable("add_item/{category}") { backStackEntry ->
+            val category = backStackEntry.arguments?.getString("category") ?: "unknown"
+            AddItemScreen(navController, category)
         }
     }
 }

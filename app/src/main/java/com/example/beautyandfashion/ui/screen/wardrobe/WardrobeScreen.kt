@@ -38,7 +38,8 @@ fun WardrobeScreen(navController: NavController) {
             SectionWithFilterAndGrid(
                 title = "Upper Body",
                 filters = listOf("All Upper Body", "Jackets", "Tops"),
-                navController = navController
+                navController = navController,
+                category = "upper_body"
             )
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -46,24 +47,31 @@ fun WardrobeScreen(navController: NavController) {
             // Section: Lower Body
             SectionWithFilterAndGrid(
                 title = "Lower Body",
-                filters = listOf("All Upper Body", "Jackets", "Tops"),
-                navController = navController
+                filters = listOf("All Lower Body", "Skirts", "Jeans"),
+                navController = navController,
+                category = "lower_body"
             )
 
             Spacer(modifier = Modifier.height(16.dp))
 
             // Section: Shoes
             SectionWithFilterAndGrid(
-                title = "Shoes",
-                filters = listOf("All Upper Body", "Jackets", "Tops"),
-                navController = navController
+                title = "Lower Body",
+                filters = listOf("All Shoes", "Heels", "Sneakers"),
+                navController = navController,
+                category = "shoes"
             )
         }
     }
 }
 
 @Composable
-fun SectionWithFilterAndGrid(title: String, filters: List<String>, navController: NavController) {
+fun SectionWithFilterAndGrid(
+    title: String,
+    filters: List<String>,
+    navController: NavController,
+    category: String
+) {
     Column {
         Text(
             text = title,
@@ -108,7 +116,7 @@ fun SectionWithFilterAndGrid(title: String, filters: List<String>, navController
                         contentAlignment = Alignment.Center,
                         modifier = Modifier.clickable {
                             if (item == "+") {
-                                navController.navigate("add_item")
+                                navController.navigate("add_item/$category")
                             }
                         }
                     ) {
