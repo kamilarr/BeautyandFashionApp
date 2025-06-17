@@ -16,6 +16,7 @@ import com.example.beautyandfashion.ui.screen.welcome.WelcomeScreen
 import com.example.beautyandfashion.ui.screen.features.colormatch.ColorAnalysisScreen
 import com.example.beautyandfashion.ui.screen.features.Beautypedia.ArticleDetailScreen
 import com.example.beautyandfashion.ui.screen.features.Beautypedia.BeautypediaScreen
+import com.example.beautyandfashion.ui.screen.features.ColorMatch.ResultScreen
 import com.example.beautyandfashion.ui.screen.features.SkinAnalysis.SkinAnalysisScreen
 import com.example.beautyandfashion.ui.screen.features.SkinAnalysis.SkinResultScreen
 
@@ -35,6 +36,11 @@ fun NavGraph(navController: NavHostController) {
         composable("color") { ColorAnalysisScreen(navController) }
         composable("skin") { SkinAnalysisScreen(navController) }
         composable("wiki") { BeautypediaScreen(navController) }
+
+        composable("result/{season}") { backStackEntry ->
+            val season = backStackEntry.arguments?.getString("season") ?: "Unknown"
+            ResultScreen(seasonType = season, navController = navController)
+        }
 
         composable(
             route = "skinResult/{skinType}",

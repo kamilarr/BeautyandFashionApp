@@ -160,7 +160,7 @@ fun ColorAnalysisScreen(navController: NavController) {
 
             Button(
                 onClick = {
-                    // TODO: Navigasi ke halaman rekomendasi sesuai musim
+                    navController.navigate("result/${backgroundLabels[currentIndex]}")
                 },
                 modifier = Modifier
                     .height(48.dp)
@@ -168,7 +168,7 @@ fun ColorAnalysisScreen(navController: NavController) {
                 colors = ButtonDefaults.buttonColors(containerColor = buttonColor),
                 shape = RoundedCornerShape(12.dp)
             ) {
-                Text("See Recommendation", color = buttonTextColor, fontSize = 16.sp)
+                Text("See Description", color = buttonTextColor, fontSize = 16.sp)
             }
         }
     }
