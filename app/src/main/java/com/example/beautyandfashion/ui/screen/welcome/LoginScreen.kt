@@ -28,12 +28,20 @@ import com.example.beautyandfashion.R
 import com.example.beautyandfashion.ui.theme.BrownDark
 import com.example.beautyandfashion.ui.theme.BrownLight
 import com.example.beautyandfashion.ui.theme.CreamLight
+import kotlinx.coroutines.launch
 
 @Composable
 fun LoginScreen(navController: NavController) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }
+    val coroutineScope = rememberCoroutineScope()
+    val snackbarHostState = remember { SnackbarHostState() }
+
+    val dummyUsers = listOf(
+        Pair("admin@gmail.com", "admin123"),
+        Pair("user@gmail.com", "12345678")
+    )
 
     val gradient = Brush.verticalGradient(
         colors = listOf(CreamLight, BrownLight)
