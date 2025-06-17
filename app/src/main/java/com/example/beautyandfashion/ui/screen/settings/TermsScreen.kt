@@ -19,7 +19,7 @@ fun TermsOfServiceScreen(navController: NavController) {
         containerColor = Color(0xFFF9EFE6),
         topBar = {
             AppTopBar(
-                title = "Terms of Services",
+                title = "Terms of Service",
                 onBack = { navController.navigateUp() },
                 icon = null
             )

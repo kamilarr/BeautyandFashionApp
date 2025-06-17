@@ -129,15 +129,18 @@ fun SettingsScreen(navController: NavController) {
             SettingsItem("My Information", Icons.Outlined.AccountCircle) {
                 showInfoDialog = true
             }
-
             SettingsItem("Terms of Service", Icons.Outlined.Settings) {
                 navController.navigate("terms")
             }
-            SettingsItem("Privacy Policy", Icons.Filled.Lock)
+            SettingsItem("Privacy Policy", Icons.Filled.Lock) {
+                navController.navigate("privacy")
+            }
             SettingsItem("Help", Icons.Filled.Warning) {
                 navController.navigate("help")
             }
-            SettingsItem("About Us", Icons.Filled.Info)
+            SettingsItem("About Us", Icons.Filled.Info){
+                navController.navigate("terms")
+            }
             SettingsItem("Sign Out", Icons.Filled.ExitToApp) {
                 navController.navigate("login") {
                     popUpTo("settings") { inclusive = true } // agar tidak bisa balik pakai tombol back
