@@ -24,7 +24,7 @@ fun HelpScreen(navController: NavController) {
         containerColor = Color(0xFFF9EFE6),
         topBar = {
             AppTopBar(
-                title = "Personal Color Match",
+                title = "Help",
                 onBack = { navController.navigateUp() },
                 icon = null
             )
@@ -79,7 +79,6 @@ fun HelpScreen(navController: NavController) {
             Column(
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                // Judul di atas
                 Text(
                     text = "Masih butuh bantuan?",
                     style = MaterialTheme.typography.titleLarge.copy(
@@ -88,7 +87,6 @@ fun HelpScreen(navController: NavController) {
                     )
                 )
 
-                // Baris berisi ikon dan teks email
                 Row(
                     verticalAlignment = Alignment.CenterVertically
                 ) {

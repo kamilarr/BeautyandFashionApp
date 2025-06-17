@@ -11,6 +11,7 @@ import com.example.beautyandfashion.ui.screen.home.HomeScreen
 import com.example.beautyandfashion.ui.screen.settings.SettingsScreen
 import com.example.beautyandfashion.ui.screen.settings.PremiumPlanScreen
 import com.example.beautyandfashion.ui.screen.settings.HelpScreen
+import com.example.beautyandfashion.ui.screen.settings.TermsOfServiceScreen
 import com.example.beautyandfashion.ui.screen.wardrobe.WardrobeScreen
 import com.example.beautyandfashion.ui.screen.wardrobe.AddItemScreen
 import com.example.beautyandfashion.ui.screen.welcome.LoginScreen
@@ -36,6 +37,7 @@ fun NavGraph(navController: NavHostController) {
         composable("wardrobe") { WardrobeScreen(navController) }
         composable("settings") { SettingsScreen(navController) }
         composable("help") { HelpScreen(navController) }
+        composable("terms") { TermsOfServiceScreen(navController) }
         composable("body") { BodyShapeScreen(navController) }
         composable("color") { ColorAnalysisScreen(navController) }
         composable("skin") { SkinAnalysisScreen(navController) }

@@ -1,5 +1,3 @@
-@file:OptIn(ExperimentalMaterial3Api::class)
-
 package com.example.beautyandfashion.ui.screen.settings
 
 import android.net.Uri
@@ -132,8 +130,9 @@ fun SettingsScreen(navController: NavController) {
                 showInfoDialog = true
             }
 
-            SettingsItem("History Recommendation", Icons.Filled.Refresh)
-            SettingsItem("Terms of Service", Icons.Outlined.Settings)
+            SettingsItem("Terms of Service", Icons.Outlined.Settings) {
+                navController.navigate("terms")
+            }
             SettingsItem("Privacy Policy", Icons.Filled.Lock)
             SettingsItem("Help", Icons.Filled.Warning) {
                 navController.navigate("help")
