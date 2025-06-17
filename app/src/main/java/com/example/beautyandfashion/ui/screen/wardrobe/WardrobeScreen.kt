@@ -11,6 +11,7 @@ import androidx.navigation.NavController
 import com.example.beautyandfashion.ui.component.AppTopBar
 import com.example.beautyandfashion.ui.component.BottomBar
 import com.example.beautyandfashion.ui.theme.BrownDark
+import androidx.compose.foundation.clickable
 
 @Composable
 fun WardrobeScreen(navController: NavController) {
@@ -36,7 +37,8 @@ fun WardrobeScreen(navController: NavController) {
             // Section: Upper Body
             SectionWithFilterAndGrid(
                 title = "Upper Body",
-                filters = listOf("All Upper Body", "Jackets", "Tops")
+                filters = listOf("All Upper Body", "Jackets", "Tops"),
+                navController = navController
             )
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -44,7 +46,8 @@ fun WardrobeScreen(navController: NavController) {
             // Section: Lower Body
             SectionWithFilterAndGrid(
                 title = "Lower Body",
-                filters = listOf("All Lower Body", "Skirts", "Jeans")
+                filters = listOf("All Upper Body", "Jackets", "Tops"),
+                navController = navController
             )
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -52,14 +55,15 @@ fun WardrobeScreen(navController: NavController) {
             // Section: Shoes
             SectionWithFilterAndGrid(
                 title = "Shoes",
-                filters = listOf("All Shoes", "Heels", "Sneakers")
+                filters = listOf("All Upper Body", "Jackets", "Tops"),
+                navController = navController
             )
         }
     }
 }
 
 @Composable
-fun SectionWithFilterAndGrid(title: String, filters: List<String>) {
+fun SectionWithFilterAndGrid(title: String, filters: List<String>, navController: NavController) {
     Column {
         Text(
             text = title,
@@ -69,14 +73,13 @@ fun SectionWithFilterAndGrid(title: String, filters: List<String>) {
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        // Filters Row
         Row(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             modifier = Modifier.fillMaxWidth()
         ) {
             filters.forEach { filter ->
                 Button(
-                    onClick = { /* handle filter click */ },
+                    onClick = { /* Handle filter click if needed */ },
                     colors = ButtonDefaults.buttonColors(
                         containerColor = if (filter.contains("All")) BrownDark else MaterialTheme.colorScheme.surfaceVariant,
                         contentColor = if (filter.contains("All")) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurface
@@ -90,24 +93,28 @@ fun SectionWithFilterAndGrid(title: String, filters: List<String>) {
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        // Item Grid (3 items with "+" as the first)
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             listOf("+", "item", "item").forEach { item ->
                 Surface(
-                    modifier = Modifier
-                        .size(100.dp),
+                    modifier = Modifier.size(100.dp),
                     color = if (item == "+") BrownDark else MaterialTheme.colorScheme.surface,
                     shape = MaterialTheme.shapes.medium,
                     shadowElevation = 4.dp
                 ) {
-                    Box(contentAlignment = Alignment.Center) {
+                    Box(
+                        contentAlignment = Alignment.Center,
+                        modifier = Modifier.clickable {
+                            if (item == "+") {
+                                navController.navigate("add_item")
+                            }
+                        }
+                    ) {
                         if (item == "+") {
                             Text("+", color = MaterialTheme.colorScheme.onPrimary, style = MaterialTheme.typography.headlineLarge)
                         } else {
-                            // Placeholder item (gunakan Image/AsyncImage di implementasi nyata)
                             Text("\uD83D\uDC57", fontSize = MaterialTheme.typography.headlineLarge.fontSize)
                         }
                     }
