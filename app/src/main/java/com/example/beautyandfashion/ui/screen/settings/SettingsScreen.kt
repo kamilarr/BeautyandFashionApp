@@ -137,7 +137,11 @@ fun SettingsScreen(navController: NavController) {
             SettingsItem("Privacy Policy", Icons.Filled.Lock)
             SettingsItem("Help", Icons.Filled.Warning)
             SettingsItem("About Us", Icons.Filled.Info)
-            SettingsItem("Sign Out", Icons.Filled.ExitToApp)
+            SettingsItem("Sign Out", Icons.Filled.ExitToApp) {
+                navController.navigate("login") {
+                    popUpTo("settings") { inclusive = true } // agar tidak bisa balik pakai tombol back
+                }
+            }
         }
 
         // Tampilkan dialog jika true
