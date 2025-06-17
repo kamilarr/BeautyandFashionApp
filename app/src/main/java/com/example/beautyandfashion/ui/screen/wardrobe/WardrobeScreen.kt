@@ -1,4 +1,3 @@
-@file:OptIn(ExperimentalMaterial3Api::class)
 package com.example.beautyandfashion.ui.screen.wardrobe
 
 import androidx.compose.foundation.layout.*
@@ -7,11 +6,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.compose.foundation.clickable
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.foundation.Image
+import androidx.compose.ui.res.painterResource
+import com.example.beautyandfashion.R
 import androidx.navigation.NavController
 import com.example.beautyandfashion.ui.component.AppTopBar
 import com.example.beautyandfashion.ui.component.BottomBar
 import com.example.beautyandfashion.ui.theme.BrownDark
-import androidx.compose.foundation.clickable
+
+
 
 @Composable
 fun WardrobeScreen(navController: NavController) {
@@ -31,33 +37,28 @@ fun WardrobeScreen(navController: NavController) {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
-                .padding(horizontal = 16.dp, vertical = 8.dp),
+                .padding(horizontal = 16.dp, vertical = 24.dp),
             verticalArrangement = Arrangement.Top
         ) {
-            // Section: Upper Body
+
             SectionWithFilterAndGrid(
                 title = "Upper Body",
-                filters = listOf("All Upper Body", "Jackets", "Tops"),
                 navController = navController,
                 category = "upper_body"
             )
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Section: Lower Body
             SectionWithFilterAndGrid(
                 title = "Lower Body",
-                filters = listOf("All Lower Body", "Skirts", "Jeans"),
                 navController = navController,
                 category = "lower_body"
             )
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Section: Shoes
             SectionWithFilterAndGrid(
                 title = "Lower Body",
-                filters = listOf("All Shoes", "Heels", "Sneakers"),
                 navController = navController,
                 category = "shoes"
             )
@@ -68,46 +69,38 @@ fun WardrobeScreen(navController: NavController) {
 @Composable
 fun SectionWithFilterAndGrid(
     title: String,
-    filters: List<String>,
     navController: NavController,
     category: String
 ) {
+    val items = listOf("+", "item1", "item2")
+
+    // Tentukan gambar berdasarkan kategori
+    val images = when (category) {
+        "upper_body" -> listOf(R.drawable.zjacket, R.drawable.ztshirt2)
+        "lower_body" -> listOf(R.drawable.xjeans, R.drawable.xminiskirt)
+        "shoes" -> listOf(R.drawable.ysneakers, R.drawable.ywedges)
+        else -> listOf(R.drawable.zjacket, R.drawable.zjacket)
+    }
+
     Column {
         Text(
             text = title,
-            style = MaterialTheme.typography.titleMedium,
-            color = BrownDark
+            style = MaterialTheme.typography.titleLarge.copy(
+                fontWeight = FontWeight.Bold,
+                color = BrownDark
+            ),
+            modifier = Modifier.padding(start = 8.dp, bottom = 8.dp)
         )
 
-        Spacer(modifier = Modifier.height(8.dp))
-
-        Row(
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            filters.forEach { filter ->
-                Button(
-                    onClick = { /* Handle filter click if needed */ },
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = if (filter.contains("All")) BrownDark else MaterialTheme.colorScheme.surfaceVariant,
-                        contentColor = if (filter.contains("All")) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurface
-                    ),
-                    shape = MaterialTheme.shapes.medium
-                ) {
-                    Text(filter)
-                }
-            }
-        }
-
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(12.dp))
 
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            listOf("+", "item", "item").forEach { item ->
+            items.forEachIndexed { index, item ->
                 Surface(
-                    modifier = Modifier.size(100.dp),
+                    modifier = Modifier.size(120.dp),
                     color = if (item == "+") BrownDark else MaterialTheme.colorScheme.surface,
                     shape = MaterialTheme.shapes.medium,
                     shadowElevation = 4.dp
@@ -121,13 +114,23 @@ fun SectionWithFilterAndGrid(
                         }
                     ) {
                         if (item == "+") {
-                            Text("+", color = MaterialTheme.colorScheme.onPrimary, style = MaterialTheme.typography.headlineLarge)
+                            Text(
+                                "+",
+                                color = Color.White,
+                                style = MaterialTheme.typography.headlineLarge
+                            )
                         } else {
-                            Text("\uD83D\uDC57", fontSize = MaterialTheme.typography.headlineLarge.fontSize)
+                            Image(
+                                painter = painterResource(id = images[index - 1]),
+                                contentDescription = "Item Image",
+                                modifier = Modifier.size(110.dp)
+                            )
                         }
                     }
                 }
             }
         }
+
+        Spacer(modifier = Modifier.height(20.dp)) // spacing section
     }
 }

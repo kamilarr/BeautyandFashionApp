@@ -25,7 +25,6 @@ import com.example.beautyandfashion.ui.theme.BrownDark
 fun AddItemScreen(navController: NavController, category: String) {
     val title = "List of Item"
 
-    // Ganti dengan gambar nyata yang kamu simpan di drawable
     val items = when (category) {
         "upper_body" -> listOf(
             R.drawable.zjacket to "Jacket",
@@ -94,18 +93,31 @@ fun AddItemScreen(navController: NavController, category: String) {
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             items(items) { item ->
-                Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    Image(
-                        painter = painterResource(id = item.first),
-                        contentDescription = "Item Image",
-                        modifier = Modifier.size(140.dp)
-                    )
-                    Spacer(modifier = Modifier.height(4.dp))
-                    Text(
-                        text = item.second,
-                        style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.SemiBold),
-                        color = Color.Black
-                    )
+                Surface(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(180.dp),
+                    shape = MaterialTheme.shapes.medium,
+                    color = MaterialTheme.colorScheme.surface,
+                    shadowElevation = 6.dp
+                ) {
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center,
+                        modifier = Modifier.fillMaxSize().padding(8.dp)
+                    ) {
+                        Image(
+                            painter = painterResource(id = item.first),
+                            contentDescription = "Item Image",
+                            modifier = Modifier.size(130.dp)
+                        )
+                        Spacer(modifier = Modifier.height(8.dp))
+                        Text(
+                            text = item.second,
+                            style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.SemiBold),
+                            color = BrownDark
+                        )
+                    }
                 }
             }
         }
