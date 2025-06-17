@@ -9,7 +9,6 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -24,7 +23,7 @@ import com.example.beautyandfashion.ui.theme.BrownDark
 
 @Composable
 fun AddItemScreen(navController: NavController, category: String) {
-    val title = "Add New Item"
+    val title = "List of Item"
 
     // Ganti dengan gambar nyata yang kamu simpan di drawable
     val items = when (category) {
@@ -35,27 +34,28 @@ fun AddItemScreen(navController: NavController, category: String) {
             R.drawable.zdress to "Dress",
             R.drawable.ztshirt to "Black t-shirt",
             R.drawable.ztshirt2 to "Brown t-shirt",
-            R.drawable.zjacket to "Jacket",
-            R.drawable.zblouse to "Blouse"
+            R.drawable.zkaos to "Green Shirt",
+            R.drawable.zblus to "Pink Blouse"
         )
         "lower_body" -> listOf(
             R.drawable.xjeans to "High Waist Jeans",
-            R.drawable.xpants to "Skinny Pants",
-            R.drawable.xminiskirt to "Denim Skirt",
-            R.drawable.xlongskirt to "Wide Trousers",
-            R.drawable.xtrousers to "Jogger Pants",
-            R.drawable.xhotpants to "White Shorts",
-            R.drawable.xjeans to "High Waist Jeans",
-            R.drawable.xpants to "Skinny Pants",        )
+            R.drawable.xpants to "Short Panyts",
+            R.drawable.xminiskirt to "Mini Skirt",
+            R.drawable.xlongskirt to "Long Skirt",
+            R.drawable.xtrousers to "Trousers",
+            R.drawable.xhotpants to "Hot Pants",
+            R.drawable.xtraining to "Training Pants",
+            R.drawable.xmidiskirt to "Long Grey Skirt"
+        )
         "shoes" -> listOf(
-            R.drawable.gigi to "White Sneakers",
-            R.drawable.gigi to "Ankle Boots",
-            R.drawable.gigi to "Beige Loafers",
-            R.drawable.gigi to "Sport Shoes",
-            R.drawable.gigi to "Heels Nude",
-            R.drawable.gigi to "Brown Sandals",
-            R.drawable.gigi to "Floral Blouse",
-            R.drawable.gigi to "Floral Blouse"
+            R.drawable.yheels to "Black High Heels",
+            R.drawable.ywedges to "White Wedges",
+            R.drawable.yflatshoes to "Flatshoes",
+            R.drawable.ysneakers to "White Sneakers",
+            R.drawable.ysandals to "Sandals",
+            R.drawable.yboots to "Boots",
+            R.drawable.ycrocs to "Crocks",
+            R.drawable.ysandall to "Trpoical Sandals"
         )
         else -> emptyList()
     }
@@ -71,9 +71,14 @@ fun AddItemScreen(navController: NavController, category: String) {
                     }
                 },
                 actions = {
-                    IconButton(onClick = { /* Aksi lainnya */ }) {
-                        Icon(Icons.Default.Settings, contentDescription = "Settings", tint = Color.White)
-                    }
+                    Icon(
+                        painter = painterResource(id = R.drawable.glammuse),
+                        contentDescription = "Logo",
+                        tint = Color.White,
+                        modifier = Modifier
+                            .padding(end = 16.dp)
+                            .size(30.dp)
+                    )
                 },
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = BrownDark)
             )
