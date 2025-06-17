@@ -9,41 +9,49 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material.icons.outlined.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.text.font.FontWeight
 import com.example.beautyandfashion.R
 import com.example.beautyandfashion.ui.component.AppTopBar
 import com.example.beautyandfashion.ui.component.BottomBar
 import com.example.beautyandfashion.ui.theme.Manrope
-import androidx.compose.runtime.saveable.rememberSaveable
 
 @Composable
 fun SettingsScreen(navController: NavController) {
     val scrollState = rememberScrollState()
 
-    // 1. State untuk URI gambar profil
+    // Untuk menyimpan gambar profil
     var selectedImageUri by rememberSaveable { mutableStateOf<Uri?>(null) }
 
-    // 2. Launcher untuk membuka galeri
+    // Untuk menyimpan data user
+    var username by rememberSaveable { mutableStateOf("Jasmine") }
+    var email by rememberSaveable { mutableStateOf("") }
+    var phone by rememberSaveable { mutableStateOf("") }
+
+    // Untuk menampilkan dialog My Information
+    var showInfoDialog by remember { mutableStateOf(false) }
+
+    // Launcher galeri
     val launcher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.GetContent()
     ) { uri: Uri? ->
@@ -52,11 +60,7 @@ fun SettingsScreen(navController: NavController) {
 
     Scaffold(
         topBar = {
-            AppTopBar(
-                title = "Profile",
-                onBack = null,
-                icon = null
-            )
+            AppTopBar(title = "Profile", onBack = null, icon = null)
         },
         bottomBar = {
             BottomBar(navController, "settings")
@@ -72,7 +76,6 @@ fun SettingsScreen(navController: NavController) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Box(modifier = Modifier.size(100.dp)) {
-                // 3. Gambar profil: tampilkan dari URI jika ada, jika tidak tampilkan default
                 Image(
                     painter = if (selectedImageUri != null)
                         rememberAsyncImagePainter(selectedImageUri)
@@ -86,7 +89,6 @@ fun SettingsScreen(navController: NavController) {
                     contentScale = ContentScale.Crop
                 )
 
-                // 4. Icon edit
                 Icon(
                     imageVector = Icons.Default.Edit,
                     contentDescription = "Edit Profile Picture",
@@ -96,13 +98,13 @@ fun SettingsScreen(navController: NavController) {
                         .background(Color.White, CircleShape)
                         .padding(4.dp)
                         .clickable {
-                            launcher.launch("image/*") // buka galeri
+                            launcher.launch("image/*")
                         }
                 )
             }
 
             Text(
-                text = "Jasmine",
+                text = username,
                 style = MaterialTheme.typography.titleMedium.copy(
                     fontFamily = Manrope,
                     fontWeight = FontWeight.Bold,
@@ -126,13 +128,56 @@ fun SettingsScreen(navController: NavController) {
 
             Spacer(modifier = Modifier.height(12.dp))
 
-            SettingsItem("My Information", Icons.Outlined.AccountCircle)
+            SettingsItem("My Information", Icons.Outlined.AccountCircle) {
+                showInfoDialog = true
+            }
+
             SettingsItem("History Recommendation", Icons.Filled.Refresh)
             SettingsItem("Terms of Service", Icons.Outlined.Settings)
             SettingsItem("Privacy Policy", Icons.Filled.Lock)
             SettingsItem("Help", Icons.Filled.Warning)
             SettingsItem("About Us", Icons.Filled.Info)
             SettingsItem("Sign Out", Icons.Filled.ExitToApp)
+        }
+
+        // Tampilkan dialog jika true
+        if (showInfoDialog) {
+            AlertDialog(
+                onDismissRequest = { showInfoDialog = false },
+                title = { Text("Edit My Information") },
+                text = {
+                    Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                        OutlinedTextField(
+                            value = username,
+                            onValueChange = { username = it },
+                            label = { Text("Username") },
+                            singleLine = true
+                        )
+                        OutlinedTextField(
+                            value = email,
+                            onValueChange = { email = it },
+                            label = { Text("Email") },
+                            singleLine = true
+                        )
+                        OutlinedTextField(
+                            value = phone,
+                            onValueChange = { phone = it },
+                            label = { Text("Phone Number") },
+                            singleLine = true
+                        )
+                    }
+                },
+                confirmButton = {
+                    TextButton(onClick = { showInfoDialog = false }) {
+                        Text("Save")
+                    }
+                },
+                dismissButton = {
+                    TextButton(onClick = { showInfoDialog = false }) {
+                        Text("Cancel")
+                    }
+                }
+            )
         }
     }
 }
