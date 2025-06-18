@@ -44,7 +44,7 @@ fun AboutUsScreen(navController: NavController) {
             )
 
             Text(
-                "Beauty & Fashion Assistant adalah aplikasi cerdas yang dirancang untuk membantu Anda memahami, merawat, dan mengekspresikan diri melalui gaya pribadi dan kecantikan. Kami percaya bahwa setiap individu memiliki keunikan yang patut dirayakan. Dengan fitur analisis jenis kulit, rekomendasi pakaian, serta personalisasi berdasarkan preferensi Anda, aplikasi ini hadir sebagai teman setia dalam perjalanan kecantikan dan fashion Anda. Kami berkomitmen untuk memberikan pengalaman yang menyenangkan, inklusif, dan informatif agar Anda bisa tampil percaya diri setiap hari.",
+                "Glammuse adalah aplikasi cerdas yang dirancang untuk membantu Anda memahami, merawat, dan mengekspresikan diri melalui gaya pribadi dan kecantikan. Kami percaya bahwa setiap individu memiliki keunikan yang patut dirayakan. Dengan fitur analisis jenis kulit, rekomendasi pakaian, serta personalisasi berdasarkan preferensi Anda, aplikasi ini hadir sebagai teman setia dalam perjalanan kecantikan dan fashion Anda. Kami berkomitmen untuk memberikan pengalaman yang menyenangkan, inklusif, dan informatif agar Anda bisa tampil percaya diri setiap hari.",
                 style = MaterialTheme.typography.bodyLarge.copy(
                     fontSize = 18.sp,
                     textAlign = TextAlign.Justify,
