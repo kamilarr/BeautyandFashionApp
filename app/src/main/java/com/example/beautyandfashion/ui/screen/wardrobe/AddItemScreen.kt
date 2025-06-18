@@ -7,8 +7,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -19,6 +17,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.beautyandfashion.R
+import com.example.beautyandfashion.ui.component.AppTopBar
 import com.example.beautyandfashion.ui.theme.BrownDark
 
 @Composable
@@ -62,24 +61,10 @@ fun AddItemScreen(navController: NavController, category: String) {
     Scaffold(
         containerColor = Color(0xFFF9EFE6),
         topBar = {
-            TopAppBar(
-                title = { Text(title, color = Color.White) },
-                navigationIcon = {
-                    IconButton(onClick = { navController.popBackStack() }) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = "Back", tint = Color.White)
-                    }
-                },
-                actions = {
-                    Icon(
-                        painter = painterResource(id = R.drawable.glammuse),
-                        contentDescription = "Logo",
-                        tint = Color.White,
-                        modifier = Modifier
-                            .padding(end = 16.dp)
-                            .size(30.dp)
-                    )
-                },
-                colors = TopAppBarDefaults.topAppBarColors(containerColor = BrownDark)
+            AppTopBar(
+                title = "List of Items",
+                onBack = { navController.navigateUp() },
+                icon = null
             )
         }
     ) { paddingValues ->

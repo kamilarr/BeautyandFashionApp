@@ -1,5 +1,5 @@
 @file:OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
-package com.example.beautyandfashion.ui.screen.features
+package com.example.beautyandfashion.ui.screen.features.BodyShape
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.ui.Modifier
@@ -32,7 +32,6 @@ import com.example.beautyandfashion.ui.component.AppTopBar
 import com.example.beautyandfashion.ui.theme.BrownDark
 import com.example.beautyandfashion.ui.theme.BrownLight
 import com.example.beautyandfashion.ui.theme.BrownMedium
-import kotlin.math.abs
 
 enum class BodyType(val displayName: String, val description: String) {
     APPLE("Apple", "Broader shoulders and bust, narrower hips"),

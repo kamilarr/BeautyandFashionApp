@@ -10,8 +10,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -27,12 +25,9 @@ import androidx.navigation.NavController
 import com.example.beautyandfashion.R
 import com.example.beautyandfashion.ui.theme.BrownDark
 import com.example.beautyandfashion.ui.component.AppTopBar
-import com.example.beautyandfashion.ui.screen.homeScreen
 import org.json.JSONArray
 
-
 // Data model
-
 data class Question(val text: String, val options: List<String>)
 data class SkinResult(val imageRes: Int, val title: String, val description: String)
 
@@ -293,7 +288,7 @@ fun matchSkinType(context: Context, userAnswers: List<String>): String {
             }
         }
 
-        // Tidak cocok = fallback
+        // fallback
         "Normal"
     } catch (e: Exception) {
         Log.e("SkinType", "Error matching skin type", e)

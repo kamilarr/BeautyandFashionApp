@@ -17,8 +17,6 @@ import com.example.beautyandfashion.ui.component.AppTopBar
 import com.example.beautyandfashion.ui.component.BottomBar
 import com.example.beautyandfashion.ui.theme.BrownDark
 
-
-
 @Composable
 fun WardrobeScreen(navController: NavController) {
     Scaffold(

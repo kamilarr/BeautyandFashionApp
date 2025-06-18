@@ -6,13 +6,13 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.example.beautyandfashion.ui.screen.features.*
 import com.example.beautyandfashion.ui.screen.home.HomeScreen
 import com.example.beautyandfashion.ui.screen.settings.SettingsScreen
 import com.example.beautyandfashion.ui.screen.settings.PremiumPlanScreen
 import com.example.beautyandfashion.ui.screen.settings.HelpScreen
 import com.example.beautyandfashion.ui.screen.settings.TermsOfServiceScreen
 import com.example.beautyandfashion.ui.screen.settings.PrivacyPolicyScreen
+import com.example.beautyandfashion.ui.screen.settings.AboutUsScreen
 import com.example.beautyandfashion.ui.screen.wardrobe.WardrobeScreen
 import com.example.beautyandfashion.ui.screen.wardrobe.AddItemScreen
 import com.example.beautyandfashion.ui.screen.welcome.LoginScreen
@@ -21,6 +21,7 @@ import com.example.beautyandfashion.ui.screen.welcome.WelcomeScreen
 import com.example.beautyandfashion.ui.screen.features.ColorMatch.ColorAnalysisScreen
 import com.example.beautyandfashion.ui.screen.features.Beautypedia.ArticleDetailScreen
 import com.example.beautyandfashion.ui.screen.features.Beautypedia.BeautypediaScreen
+import com.example.beautyandfashion.ui.screen.features.BodyShape.BodyShapeScreen
 import com.example.beautyandfashion.ui.screen.features.ColorMatch.ResultScreen
 import com.example.beautyandfashion.ui.screen.features.SkinAnalysis.SkinAnalysisScreen
 import com.example.beautyandfashion.ui.screen.features.SkinAnalysis.SkinResultScreen
@@ -40,6 +41,7 @@ fun NavGraph(navController: NavHostController) {
         composable("help") { HelpScreen(navController) }
         composable("terms") { TermsOfServiceScreen(navController) }
         composable("privacy") { PrivacyPolicyScreen(navController) }
+        composable("about") { AboutUsScreen(navController) }
         composable("body") { BodyShapeScreen(navController) }
         composable("color") { ColorAnalysisScreen(navController) }
         composable("skin") { SkinAnalysisScreen(navController) }

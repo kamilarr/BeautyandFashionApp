@@ -139,7 +139,7 @@ fun SettingsScreen(navController: NavController) {
                 navController.navigate("help")
             }
             SettingsItem("About Us", Icons.Filled.Info){
-                navController.navigate("terms")
+                navController.navigate("about")
             }
             SettingsItem("Sign Out", Icons.Filled.ExitToApp) {
                 navController.navigate("login") {

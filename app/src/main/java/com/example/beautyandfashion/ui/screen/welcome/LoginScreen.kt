@@ -13,14 +13,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -37,144 +35,138 @@ fun LoginScreen(navController: NavController) {
     var passwordVisible by remember { mutableStateOf(false) }
     val coroutineScope = rememberCoroutineScope()
     val snackbarHostState = remember { SnackbarHostState() }
+    var showErrorDialog by remember { mutableStateOf(false) }
 
     val dummyUsers = listOf(
         Pair("admin@gmail.com", "admin123"),
         Pair("user@gmail.com", "12345678")
     )
 
-    val gradient = Brush.verticalGradient(
-        colors = listOf(CreamLight, BrownLight)
-    )
+    val gradient = Brush.verticalGradient(colors = listOf(CreamLight, BrownLight))
 
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(gradient)
-            .padding(24.dp),
-        contentAlignment = Alignment.Center
-    ) {
-        Column(
-            verticalArrangement = Arrangement.spacedBy(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+    Scaffold(
+        snackbarHost = { SnackbarHost(snackbarHostState) },
+        containerColor = Color.Transparent // keep background gradient
+    ) { innerPadding ->
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(gradient)
+                .padding(24.dp)
+                .padding(innerPadding),
+            contentAlignment = Alignment.Center
         ) {
-            Icon(
-                painter = painterResource(id = R.drawable.glammuse),
-                contentDescription = "Logo",
-                tint = BrownDark,
-                modifier = Modifier.size(64.dp)
-            )
-
-            Text(
-                text = "Welcome!",
-                fontSize = 28.sp,
-                fontStyle = FontStyle.Italic,
-                color = BrownDark,
-                fontWeight = FontWeight.Medium
-            )
-
-            Text(
-                text = "to Glammuse",
-                fontSize = 24.sp,
-                fontWeight = FontWeight.Bold,
-                color = BrownDark
-            )
-
-            // Email Field
-            OutlinedTextField(
-                value = email,
-                onValueChange = { email = it },
-                label = { Text("Email") },
-                leadingIcon = { Icon(Icons.Default.Email, contentDescription = null) },
-                singleLine = true,
-                modifier = Modifier.fillMaxWidth(0.85f)
-            )
-
-            // Password Field
-            OutlinedTextField(
-                value = password,
-                onValueChange = { password = it },
-                label = { Text("Password") },
-                leadingIcon = { Icon(Icons.Default.Visibility, contentDescription = null) },
-                trailingIcon = {
-                    IconButton(onClick = { passwordVisible = !passwordVisible }) {
-                        Icon(
-                            imageVector = if (passwordVisible) Icons.Filled.VisibilityOff else Icons.Filled.Visibility,
-                            contentDescription = null
-                        )
-                    }
-                },
-                singleLine = true,
-                visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-                modifier = Modifier.fillMaxWidth(0.85f)
-            )
-
-            // Login Button
-            Button(
-                onClick = {
-                    // Navigasi ke Home saat login berhasil
-                    navController.navigate("home") {
-                        popUpTo("login") { inclusive = true }
-                    }
-                },
-                colors = ButtonDefaults.buttonColors(containerColor = BrownDark),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(48.dp)
+            Column(
+                verticalArrangement = Arrangement.spacedBy(16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text("Login", color = Color.White)
-            }
+                Icon(
+                    painter = painterResource(id = R.drawable.glammuse),
+                    contentDescription = "Logo",
+                    tint = BrownDark,
+                    modifier = Modifier.size(64.dp)
+                )
 
-            // Or Divider
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.padding(vertical = 8.dp)
-            ) {
-                Divider(modifier = Modifier.weight(1f))
                 Text(
-                    "  Or  ",
-                    textAlign = TextAlign.Center,
-                    fontSize = 14.sp,
+                    text = "Welcome!",
+                    fontSize = 28.sp,
+                    fontStyle = FontStyle.Italic,
+                    color = BrownDark,
+                    fontWeight = FontWeight.Medium
+                )
+
+                Text(
+                    text = "to Glammuse",
+                    fontSize = 24.sp,
+                    fontWeight = FontWeight.Bold,
                     color = BrownDark
                 )
-                Divider(modifier = Modifier.weight(1f))
-            }
 
-            // Alternative login icons (placeholder)
-            Row(horizontalArrangement = Arrangement.spacedBy(24.dp)) {
-                Icon(
-                    painter = painterResource(id = R.drawable.glammuse),
-                    contentDescription = "Face Login",
-                    tint = BrownDark,
-                    modifier = Modifier.size(32.dp)
+                OutlinedTextField(
+                    value = email,
+                    onValueChange = { email = it },
+                    label = { Text("Email") },
+                    leadingIcon = { Icon(Icons.Default.Email, contentDescription = null) },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(0.85f)
                 )
-                Icon(
-                    painter = painterResource(id = R.drawable.glammuse),
-                    contentDescription = "Ring Login",
-                    tint = BrownDark,
-                    modifier = Modifier.size(32.dp)
-                )
-            }
 
-            // Register Now
-            Row(
-                horizontalArrangement = Arrangement.Center,
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Text(
-                    text = "Don't have an account?",
-                    color = Color(0xFF5D3A00)
+                OutlinedTextField(
+                    value = password,
+                    onValueChange = { password = it },
+                    label = { Text("Password") },
+                    leadingIcon = { Icon(Icons.Default.Visibility, contentDescription = null) },
+                    trailingIcon = {
+                        IconButton(onClick = { passwordVisible = !passwordVisible }) {
+                            Icon(
+                                imageVector = if (passwordVisible) Icons.Filled.VisibilityOff else Icons.Filled.Visibility,
+                                contentDescription = null
+                            )
+                        }
+                    },
+                    singleLine = true,
+                    visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                    modifier = Modifier.fillMaxWidth(0.85f)
                 )
-                Spacer(modifier = Modifier.width(4.dp))
-                TextButton(onClick = { navController.navigate("signup") }) {
-                    Text(
-                        text = "Register Now",
-                        color = BrownDark,
-                        fontWeight = FontWeight.Bold,
-                        style = MaterialTheme.typography.bodyMedium
+
+                Button(
+                    onClick = {
+                        coroutineScope.launch {
+                            if (email.isBlank() || password.isBlank()) {
+                                snackbarHostState.showSnackbar("Email and password must be filled in.")
+                            } else {
+                                val isValidUser = dummyUsers.any { it.first == email && it.second == password }
+                                if (isValidUser) {
+                                    navController.navigate("home") {
+                                        popUpTo("login") { inclusive = true }
+                                    }
+                                } else {
+                                    showErrorDialog = true
+                                }
+                            }
+                        }
+                    },
+                    colors = ButtonDefaults.buttonColors(containerColor = BrownDark),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(48.dp)
+                ) {
+                    Text("Login", color = Color.White)
+                }
+
+                if (showErrorDialog) {
+                    AlertDialog(
+                        onDismissRequest = { showErrorDialog = false },
+                        title = {
+                            Text("Login Failed", fontWeight = FontWeight.Bold)
+                        },
+                        text = {
+                            Text("Incorrect email or password.\nPlease Try Again.")
+                        },
+                        confirmButton = {
+                            TextButton(onClick = { showErrorDialog = false }) {
+                                Text("OK")
+                            }
+                        }
                     )
+                }
+
+                Row(
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text("Don't have an account?", color = Color(0xFF5D3A00))
+                    Spacer(modifier = Modifier.width(4.dp))
+                    TextButton(onClick = { navController.navigate("signup") }) {
+                        Text(
+                            text = "Register Now",
+                            color = BrownDark,
+                            fontWeight = FontWeight.Bold,
+                            style = MaterialTheme.typography.bodyMedium
+                        )
+                    }
                 }
             }
         }

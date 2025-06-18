@@ -1,4 +1,4 @@
-package com.example.beautyandfashion.ui.screen.features
+package com.example.beautyandfashion.ui.screen.features.BodyShape
 
 import android.annotation.SuppressLint
 import androidx.lifecycle.ViewModel
@@ -118,7 +118,8 @@ class BodyShapeViewModel : ViewModel() {
         val currentMeasurements = _measurements.value
 
         if (!currentMeasurements.isValid()) {
-            _uiState.value = BodyShapeUiState.Error("Please fill all measurements with valid numbers")
+            _uiState.value =
+                BodyShapeUiState.Error("Please fill all measurements with valid numbers")
             return
         }
 
