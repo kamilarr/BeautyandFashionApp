@@ -15,7 +15,6 @@ import androidx.navigation.NavController
 import com.example.beautyandfashion.R
 import com.example.beautyandfashion.ui.component.AppTopBar
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BeautypediaScreen(navController: NavController) {

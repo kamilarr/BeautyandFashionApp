@@ -56,7 +56,7 @@ fun WardrobeScreen(navController: NavController) {
             Spacer(modifier = Modifier.height(16.dp))
 
             SectionWithFilterAndGrid(
-                title = "Lower Body",
+                title = "Shoes",
                 navController = navController,
                 category = "shoes"
             )
